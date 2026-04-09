@@ -2,11 +2,11 @@ import { Resend } from "resend"
 import { NextResponse } from "next/server"
 import { ConfirmationEmail } from "@/app/emails/confirmation"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID!
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"
 
 export async function POST(req: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
+  const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID!
   try {
     const { email, consentGiven } = await req.json()
 
