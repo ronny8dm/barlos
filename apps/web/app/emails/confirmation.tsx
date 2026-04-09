@@ -11,11 +11,11 @@ import {
   Text,
 } from "@react-email/components"
 
-export function ConfirmationEmail({ confirmUrl }: { confirmUrl: string }) {
+export function ConfirmationEmail({ confirmUrl, unsubscribeUrl }: { confirmUrl: string; unsubscribeUrl: string }) {
   return (
     <Html>
       <Head />
-      <Preview>Confirm your subscription to Barlo's Burgers</Preview>
+      <Preview>One step away — confirm your Barlo's Burgers subscription</Preview>
       <Body style={{ backgroundColor: "#f9f9f9", fontFamily: "Arial, sans-serif" }}>
         <Container style={{ maxWidth: "560px", margin: "40px auto", backgroundColor: "#ffffff", borderRadius: "8px", overflow: "hidden" }}>
 
@@ -29,11 +29,11 @@ export function ConfirmationEmail({ confirmUrl }: { confirmUrl: string }) {
           {/* Body */}
           <Section style={{ padding: "40px" }}>
             <Heading style={{ color: "#012705", fontSize: "22px", marginTop: 0 }}>
-              One step away from the good stuff.
+              You're almost in the crew.
             </Heading>
             <Text style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-              Thanks for signing up! Click the button below to confirm your email address and join the Barlo's crew.
-              You'll get exclusive discounts and event announcements straight to your inbox.
+              You recently signed up to receive news, discounts, and events from Barlo's Burgers.
+              Just tap the button below to verify your email address and you're all set.
             </Text>
 
             <Button
@@ -51,21 +51,35 @@ export function ConfirmationEmail({ confirmUrl }: { confirmUrl: string }) {
                 marginTop: "8px",
               }}
             >
-              CONFIRM MY SUBSCRIPTION
+              YES, SUBSCRIBE ME
             </Button>
+
+            <Text style={{ color: "#666", fontSize: "13px", marginTop: "16px" }}>
+              Or copy and paste this link into your browser:
+            </Text>
+            <Text style={{ color: "#012705", fontSize: "12px", wordBreak: "break-all" }}>
+              {confirmUrl}
+            </Text>
 
             <Hr style={{ borderColor: "#e5e5e5", margin: "32px 0" }} />
 
             <Text style={{ color: "#999", fontSize: "12px", lineHeight: "1.6" }}>
-              If you didn't sign up for Barlo's newsletter, you can safely ignore this email —
-              you won't be added to our list without confirming.
+              Didn't sign up? No worries — just ignore this email and nothing will happen.
+              Your address will not be added to our list.
             </Text>
             <Text style={{ color: "#999", fontSize: "12px" }}>
               By confirming, you agree to our{" "}
               <a href="https://barlosburgers.com/privacy" style={{ color: "#012705" }}>
                 Privacy Policy
               </a>
-              . You can unsubscribe at any time.
+              .
+            </Text>
+            <Text style={{ color: "#bbb", fontSize: "11px", marginTop: "8px" }}>
+              Don't want to hear from us?{" "}
+              <a href={unsubscribeUrl} style={{ color: "#999" }}>
+                Unsubscribe here
+              </a>
+              .
             </Text>
           </Section>
 

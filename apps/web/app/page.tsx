@@ -1,7 +1,15 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import { MapPin, Menu } from "lucide-react"
 import { NewsletterSection } from "@/components/newsletter-section"
 import { NewsletterPopup } from "@/components/newsletter-popup"
+
+export const metadata: Metadata = {
+  title: "Barlo's Burgers | Good Beef, Good Vibes – The Gilded Lion Pub",
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_BASE_URL,
+  },
+}
 
 export default function Page() {
   return (
