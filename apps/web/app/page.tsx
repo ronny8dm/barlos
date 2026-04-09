@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import { MapPin, Menu } from "lucide-react"
+import { MapPin } from "lucide-react"
 import { NewsletterSection } from "@/components/newsletter-section"
 import { NewsletterPopup } from "@/components/newsletter-popup"
+import { MobileMenu } from "@/components/mobile-menu"
 
 export const metadata: Metadata = {
   title: "Barlo's Burgers | Good Beef, Good Vibes – The Gilded Lion Pub",
@@ -36,13 +37,11 @@ export default function Page() {
           </a>
         </div>
 
-        <button className="md:hidden text-[#1C1B18]">
-          <Menu className="w-6 h-6" />
-        </button>
+        <MobileMenu />
       </nav>
 
       {/* ── HERO ── */}
-      <section className="relative w-full h-[480px] md:h-[580px] overflow-hidden">
+      <section className="relative w-full h-[420px] md:h-[580px] overflow-hidden">
         {/* Full-width background image */}
         <Image
           src="/assets/images/hero example.jpg"
@@ -52,19 +51,19 @@ export default function Page() {
           priority
         />
 
-        {/* CTA overlay box — right side */}
-        <div className="absolute inset-0 flex items-center justify-end pr-8 md:pr-16">
+        {/* CTA overlay box */}
+        <div className="absolute inset-0 flex items-center justify-center md:justify-end px-4 md:pr-16">
           <div
             style={{ backgroundColor: "rgba(184, 212, 160, 0.93)", borderRadius: "5%" }}
-            className="flex flex-col items-start px-12 py-10 w-[520px] max-w-[50%]"
+            className="flex flex-col items-start px-6 py-6 md:px-12 md:py-10 w-full max-w-[90%] md:w-[520px] md:max-w-[50%]"
           >
             <h1
               style={{ fontFamily: "var(--font-display)", lineHeight: 1.15, color: "#0a1a06" }}
-              className="text-5xl md:text-6xl lg:text-7xl mb-4 tracking-wide text-left"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-3 md:mb-4 tracking-wide text-left"
             >
               GOOD BEEF,<br />GOOD VIBES.
             </h1>
-            <p className="text-[#1a2e14] text-xl font-medium mb-7 tracking-wide text-left">
+            <p className="text-[#1a2e14] text-base md:text-xl font-medium mb-5 md:mb-7 tracking-wide text-left">
               Worth the Wait. Every Time.
             </p>
             <div className="w-full flex justify-center">
@@ -275,44 +274,47 @@ export default function Page() {
       <NewsletterSection />
 
       {/* ── FOOTER ── */}
-      <footer style={{ backgroundColor: "#012705" }} className="px-10 py-4 mt-16">
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-6">
+      <footer style={{ backgroundColor: "#012705" }} className="px-8 py-8 mt-16">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:justify-between gap-6">
+
           {/* Logo */}
           <BarloBrand size="sm" invert />
 
-          {/* Nav links — center */}
-          <div className="flex items-center gap-6">
+          {/* Nav links */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <FooterLink href="#">Contact</FooterLink>
             <FooterLink href="#">Careers</FooterLink>
             <FooterLink href="#">Terms</FooterLink>
             <FooterLink href="/privacy">Privacy</FooterLink>
           </div>
 
-          {/* Social + copyright — right */}
-          <div className="flex flex-col items-end gap-1">
-            <div className="flex items-center gap-3">
-              <SocialIcon href="#">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
-                </svg>
-              </SocialIcon>
-              <SocialIcon href="#">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </SocialIcon>
-              <SocialIcon href="#">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </SocialIcon>
-            </div>
-            <p className="text-white/50 text-[11px] tracking-wide">
-              © 2024 Barlo's Burgers. All Rights Reserved.
-            </p>
+          {/* Social icons */}
+          <div className="flex items-center gap-4">
+            <SocialIcon href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+              </svg>
+            </SocialIcon>
+            <SocialIcon href="#">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </SocialIcon>
+            <SocialIcon href="#">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </SocialIcon>
           </div>
+        </div>
+
+        {/* Copyright — full width bottom */}
+        <div className="max-w-6xl mx-auto border-t border-white/10 mt-6 pt-4">
+          <p className="text-center text-white/40 text-xs tracking-wide">
+            © 2024 Barlo's Burgers. All Rights Reserved.
+          </p>
         </div>
       </footer>
 
